@@ -1,0 +1,15 @@
+default: run
+
+clean:
+	rm -f test.elf
+
+build: clean
+	gcc -Wall -Wextra `pkg-config --cflags --libs sdl2` -O3 -I/usr/local/include -L/usr/local/lib/burts_libs -lbmpparse main.c -o test.elf
+
+run: clean build
+	LD_LIBRARY_PATH=/usr/local/lib/burts_libs ./test.elf ./verdana9.bmp verdana
+
+debug:
+	rm -f test.elf
+	gcc -Wall -Wextra -g `pkg-config --cflags --libs sdl2` -I/usr/local/include -L/usr/local/lib/burts_libs -lbmpparse main.c -o test.elf
+	LD_LIBRARY_PATH=/usr/local/lib/burts_libs gdb	./test.elf

@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: [ -std=c99, -xc, -Wall, -Wextra, -I/usr/include/SDL2, -I../include, -D_REENTRANT, -lSDL2 ]
